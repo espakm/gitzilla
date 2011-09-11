@@ -34,7 +34,7 @@ sDefaultSeparator = "~.~.~.~.~.~.~.~.~.~.~.~.~.~.~.~."
 
 sDefaultFormatSpec = """
 commit      %H
-parents     %P
+parent      %P
 Author      %aN (%aE)
 Date        %aD
 Commit By   %cN (%cE)

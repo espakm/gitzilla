@@ -68,7 +68,7 @@
 #      default: True
 #
 #      whether the update hook should allow commits which do not contain
-#      a bug number. True or false.
+#      a bug number. True or False.
 #
 #  * allowed_bug_states
 #
@@ -78,30 +78,36 @@
 #
 #  * formatspec
 #
-#      default: commit      %H%nparents     %P%nAuthor      %aN (%aE)%nDate        %aD%nCommit By   %cN (%cE)%nCommit Date %cD%n%n%s%n%n%b%n
+#      default: commit      %H%nparent      %P%nAuthor      %aN (%aE)%nDate        %aD%nCommit By   %cN (%cE)%nCommit Date %cD%n%n%s%n%n%b%n
 #
-#      appended to '--format=format:' in 'git whatchanged'. See the
-#      'git whatchanged' manpage for more info. Newlines are automatically
-#      converted to '%n'.
+#      appended to '--format=format:' in 'git whatchanged' or 'git log'.
+#      See the 'git-whatchanged' manpage for more info. Newlines are
+#      automatically converted to '%n'.
 #
-#      If you want to replace the commits by links your GitWeb site,
-#      then enable the Bugzilla extension and use a formatspec like this:
+#      If you want to replace the commits hashes by links to your GitWeb site,
+#      then enable the Bugzilla extension and put the project name
+#      before the "commit", "parent" or "tree" words, like in the example
+#      below. The extension will remove the project name from the output
+#      while resolving the links.
 #
 #      formatspec:
+#         author      %aN <%aE>%n            %aD
+#         committer   %cN <%cE>%n            %cD
 #         MyProject.git commit      %H
-#         MyProject.git parents     %P
-#         Author      %aN (%aE)
-#         ...
-#
-#     The repository name will not appear in the output, it is only needed
-#     by the extension to create the link.
+#         MyProject.git parent      %P
+#         MyProject.git tree        %T
+#         %n
+#         %s
+#         %n
+#         %b
 #
 #  * include_diffstat
 #
 #      default: True
 #
 #      include the diffstat (a list of changed files with a histogram).
-#      If False, the diffstat is not included. True or False.
+#      If False, the diffstat is not included. In this case 'git log'
+#      is used in favour of 'git whatchanged'. True or False.
 #
 #  * separator
 #
@@ -160,7 +166,7 @@
 # user_config: deny
 # formatspec:
 #    commit      %H
-#    parents     %P
+#    parent      %P
 #    Author      %aN (%aE)
 #    Date        %aD
 #    Commit By   %cN (%cE)

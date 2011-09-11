@@ -1,6 +1,13 @@
-Move this dir into the bugzilla/extensions/ dir
+Move this directory into the bugzilla/extensions/ directory.
 
-edit /etc/gitzillarc to have a formatspec like this (replace tmp.git appropriately):
-formatspec: tmp.git commit %H%d%n%aE%n%s%n%n%b
+Edit /etc/gitzillarc to have a formatspec like this (replace
+MyProject.git appropriately):
 
-edit Extension.pm - change "www.example.com" to your gitweb url
+formatspec:
+   ...
+   MyProject.git commit      %H
+   MyProject.git parent      %P
+   MyProject.git tree        %T
+   ...
+
+Edit Extension.pm - change "www.example.com" to your gitweb url
