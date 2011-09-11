@@ -5,6 +5,9 @@
 # [Section_Name]
 # item: value
 # another_item: value2
+# third_item:
+#    line 1
+#    line 2
 #
 
 
@@ -81,6 +84,18 @@
 #      'git whatchanged' manpage for more info. Newlines are automatically
 #      converted to '%n'.
 #
+#      If you want to replace the commits by links your GitWeb site,
+#      then enable the Bugzilla extension and use a formatspec like this:
+#
+#      formatspec:
+#         MyProject.git commit      %H
+#         MyProject.git parents     %P
+#         Author      %aN (%aE)
+#         ...
+#
+#     The repository name will not appear in the output, it is only needed
+#     by the extension to create the link.
+#
 #  * include_diffstat
 #
 #      default: True
@@ -111,12 +126,12 @@
 #          - Bug #123
 #
 #  * git_ref_prefix
-#        
+#
 #      the string which must start a git reference for its commits to be
 #      processed. Defaults to 'refs/heads/' so that we don't process 'tags/' and
 #      run the risk of processing many commits multiple times. You can set it
 #      to the empty string to process all git references.
-#  
+#
 #  * logfile
 #
 #      the file to log to. Must be writable by the uid of the git
@@ -143,4 +158,14 @@
 # bugzilla_password: barbarblah
 # allowed_bug_states: NEW, ASSIGNED, REOPENED
 # user_config: deny
-
+# formatspec:
+#    commit      %H
+#    parents     %P
+#    Author      %aN (%aE)
+#    Date        %aD
+#    Commit By   %cN (%cE)
+#    Commit Date %cD
+#    %n
+#    %s
+#    %n
+#    %b
